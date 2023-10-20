@@ -48,9 +48,10 @@ export function CardComponent(props) {
                         </li>
                     </ul>
                     {
-                        props.isFinished ?
-                            <Button disabled={props.isFinished} style={{color: 'white', background: 'rgb(161,160,160)'}}>Not Active</Button> :
-                            <button className="button">{props.buttonMessage}</button>
+                        !props.buttonHide && props.isFinished && <Button disabled={props.isFinished} style={{color: 'white', background: 'rgb(161,160,160)'}}>Not Active</Button>
+                    }
+                    {
+                        !props.buttonHide && !props.isFinished && <button className="button">{props.buttonMessage}</button>
                     }
                 </div>
             </article>

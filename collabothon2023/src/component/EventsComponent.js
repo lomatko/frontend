@@ -21,8 +21,9 @@ export function EventsComponent(props) {
                             description={card.description}
                             participants={card.participants}
                             time={card.time}
-                            buttonMessage={'Join Event'}
+                            buttonMessage={props.buttonMessage}
                             isFinished={card.isFinished}
+                            buttonHide={props.buttonHide}
                             location={card.location}/>
                         </Grid>
                     })

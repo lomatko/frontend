@@ -62,6 +62,7 @@ export function TabMenuComponent(props) {
                 })
             }
 
+            <div style={{position: 'absolute', right: '15px', top: '15px'}}>Available Coins: 1000</div>
         </Box>
     );
 }

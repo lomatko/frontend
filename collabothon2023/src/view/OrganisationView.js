@@ -4,7 +4,8 @@ import {TabMenuComponent} from "../component/TabMenuComponent";
 import {EventsComponent} from "../component/EventsComponent";
 import {ORGANISATION_CARDS} from "../util/events-jsons";
 
-const TABS = [{name: 'Your Events', component: <EventsComponent cards={ORGANISATION_CARDS}/>}]
+const TABS = [
+    {name: 'Your Events', component: <EventsComponent cards={ORGANISATION_CARDS} buttonMessage={'Remove Event'}/>}]
 
 export function OrganisationView() {
 

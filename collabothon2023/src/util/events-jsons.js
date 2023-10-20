@@ -37,7 +37,7 @@ export const ALL_ACTIVE_CARDS = [{
     time: '20.10.2023 10:00',
     location: 'Łódź, Mazurska 12',
     participants: 20,
-    isFinished: true
+    isFinished: false
 },{
     title: 'Słonie na Balkonie',
     description: 'We are looking for volunteers to raise funds for hearing-impaired children.',
@@ -45,7 +45,7 @@ export const ALL_ACTIVE_CARDS = [{
     time: '20.10.2023 10:00',
     location: 'Łódź, Mazurska 12',
     participants: 20,
-    isFinished: true
+    isFinished: false
 },{
     title: 'WOŚP',
     description: 'We are looking for volunteers to raise funds for hearing-impaired children.',
@@ -53,7 +53,7 @@ export const ALL_ACTIVE_CARDS = [{
     time: '20.10.2023 10:00',
     location: 'Łódź, Mazurska 12',
     participants: 20,
-    isFinished: true
+    isFinished: false
 },{
     title: 'Słonie na Balkonie',
     description: 'We are looking for volunteers to raise funds for hearing-impaired children.',
@@ -61,7 +61,7 @@ export const ALL_ACTIVE_CARDS = [{
     time: '20.10.2023 10:00',
     location: 'Łódź, Mazurska 12',
     participants: 20,
-    isFinished: true
+    isFinished: false
 }];
 
 
