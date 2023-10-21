@@ -1,14 +1,13 @@
 import React, {useState} from "react";
-import '../style/card-style.scss';
+import '../../style/card-style.scss';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from "axios";
 
-export function AddRewardCardComponent(props) {
+export function AddOrganisationCardComponent(props) {
     const [componentState, setComponentState] = useState({
         name: '',
         description: '',
-        price: 1,
     })
 
     const changeName = (event) => {
@@ -19,23 +18,17 @@ export function AddRewardCardComponent(props) {
         setComponentState({...componentState, description: event.target.value})
     }
 
-    const changePrice = (event) => {
-        setComponentState({...componentState, price: event.target.value})
-    }
-
-    const addReward = () => {
+    const addOrganisation = () => {
         axios
-            .post("https://backend-3u6yq4mi5q-ew.a.run.app/rewards", {
+            .post("https://backend-3u6yq4mi5q-ew.a.run.app/organization", {
                 name: componentState.name,
                 description: componentState.description,
-                price: componentState.price
             })
             .then((response) => {
                 console.log('response', response)
                 setComponentState({
                     name: '',
-                        description: '',
-                        price: 1,
+                    description: '',
                 })
                 props.callBack();
             })
@@ -60,16 +53,8 @@ export function AddRewardCardComponent(props) {
                         value={componentState.description}
                         onChange={(event) => changeDescription(event)}
                     />
-                    <TextField
-                        id="standard-price"
-                        label="Price/Coins"
-                        variant="standard"
-                        type="number"
-                        InputProps={{inputProps: {min: 1}}}
-                        value={componentState.price}
-                        onChange={(event) => changePrice(event)}/>
-                    <button className="button" onClick={() => addReward()}>
-                        Add Reward
+                    <button className="button" onClick={() => addOrganisation()}>
+                        Add Organisation
                     </button>
                 </div>
             </article>

@@ -1,5 +1,5 @@
 import React from "react";
-import '../style/card-style.scss';
+import '../../style/card-style.scss';
 import Button from '@mui/material/Button';
 
 export function RewardCardComponent(props) {

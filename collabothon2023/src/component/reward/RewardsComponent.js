@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
-import '../style/login-styles.scss'
-import Button from "@mui/material/Button";
-import '../style/card-style.scss';
+import '../../style/login-styles.scss';
+import '../../style/card-style.scss';
 import Grid from "@mui/material/Grid";
-import {CardComponent} from "./CardComponent";
 import {RewardCardComponent} from "./RewardCardComponent";
 import axios from "axios";
 import {AddRewardCardComponent} from "./AddRewardCardComponent";
@@ -23,7 +21,7 @@ export function RewardsComponent(props) {
     }, [refreshCounter]);
 
 
-    const AVAILABLE_COINS = 9;
+    const AVAILABLE_COINS = 1000;
 
     const refreshData = () => {
         setRefreshCounter(refreshCounter + 1);

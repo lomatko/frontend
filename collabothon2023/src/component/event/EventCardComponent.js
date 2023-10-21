@@ -1,8 +1,8 @@
 import React from "react";
-import '../style/card-style.scss';
+import '../../style/card-style.scss';
 import Button from '@mui/material/Button';
 
-export function CardComponent(props) {
+export function EventCardComponent(props) {
 
     return (
         <div>

@@ -1,25 +1,23 @@
-import {CardComponent} from "./CardComponent";
+import {EventCardComponent} from "./EventCardComponent";
 import React, {useState, useEffect} from "react";
 import Grid from '@mui/material/Grid';
 import axios from "axios";
+import {API_URL} from "../../util/API-util";
+import {AddEventCardComponent} from "./AddEventCardComponent";
 
 export function EventsComponent(props) {
-    const[events, setEvents] = useState([]);
-
-    // TODO: call to backend for list of events
-    // --ALL EVENTS
-    // -- USER EVENTS
-
+    const [events, setEvents] = useState([]);
+    const [refreshCounter, setRefreshCounter] = useState(0);
 
     useEffect(() => {
         axios
-            .get("https://backend-3u6yq4mi5q-ew.a.run.app/events")
+            .get(API_URL + props.url)
             .then((response) => {
                 console.log('response', response)
                 setEvents(response.data)
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, [refreshCounter]);
 
     const convertDate = (event) => {
         return formattedDate(event.startDate) + ' '
@@ -50,25 +48,36 @@ export function EventsComponent(props) {
         return `${hour}:${minutes}`;
     }
 
+    const refreshData = () => {
+        setRefreshCounter(refreshCounter + 1);
+    }
+
     return (
 
         <div>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
                 {
                     events.map(event => {
                         return <Grid item xs={2}>
-                            <CardComponent
-                            title={event.title}
-                            coins={event.coins}
-                            description={event.description}
-                            participants={event.participants}
-                            time={convertDate(event)}
-                            buttonMessage={props.buttonMessage}
-                            isFinished={event.isFinished}
-                            buttonHide={props.buttonHide}
-                            location={event.location}/>
+                            <EventCardComponent
+                                title={event.title}
+                                coins={event.coins}
+                                description={event.description}
+                                participants={event.participants}
+                                time={convertDate(event)}
+                                buttonMessage={props.buttonMessage}
+                                isFinished={event.isFinished}
+                                buttonHide={props.buttonHide}
+                                location={event.location}/>
                         </Grid>
                     })
+                }
+
+
+                {props.isOrganisation &&
+                    <Grid item xs={2}>
+                        <AddEventCardComponent callBack={() => refreshData()}/>
+                    </Grid>
                 }
             </Grid>
         </div>
