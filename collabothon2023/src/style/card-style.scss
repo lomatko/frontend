@@ -154,7 +154,7 @@ body {
 	}
 
 	.inner {
-		padding: 20px;
+		//padding: 20px;
 		padding-top: 40px;
 		//background-color: var(--c-fair-pink);
 		background-color: #A9D9D0;
@@ -240,9 +240,10 @@ body {
 		color: var(--c-white);
 		font-weight: 500;
 		font-size: 1.125rem;
-		width: 100%;
+		width: 75%;
 		border: 0;
 		padding: 1em;
+		margin: 20px;
 		&:hover,
 		&:focus {
 			background-color: #016a6f;
