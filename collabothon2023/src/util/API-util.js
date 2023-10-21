@@ -1,0 +1,1 @@
+export const API_URL = "https://backend-3u6yq4mi5q-ew.a.run.app";

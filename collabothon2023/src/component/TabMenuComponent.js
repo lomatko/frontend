@@ -1,9 +1,10 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import axios from "axios";
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -39,7 +40,7 @@ function a11yProps(index) {
 }
 
 export function TabMenuComponent(props) {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -62,7 +63,12 @@ export function TabMenuComponent(props) {
                 })
             }
 
-            <div style={{position: 'absolute', right: '15px', top: '15px'}}>Available Coins: 1000</div>
+            {
+                props.isClientPanel && <div style={{position: 'absolute', right: '15px', top: '15px'}}>
+                    Available Coins: {props.userCoins}
+                </div>
+            }
+
         </Box>
     );
 }

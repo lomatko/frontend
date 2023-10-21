@@ -1,11 +1,11 @@
 import React from "react";
 import '../style/login-styles.scss'
 import {TabMenuComponent} from "../component/TabMenuComponent";
-import {EventsComponent} from "../component/EventsComponent";
+import {EventsComponent} from "../component/event/EventsComponent";
 import {ORGANISATION_CARDS} from "../util/events-jsons";
 
 const TABS = [
-    {name: 'Your Events', component: <EventsComponent cards={ORGANISATION_CARDS} buttonMessage={'Remove Event'}/>}]
+    {name: 'Your Events', component: <EventsComponent url={'/organizations/1/events'} buttonMessage={'Remove Event'} isOrganisation={true}/>}]
 
 export function OrganisationView() {
 
