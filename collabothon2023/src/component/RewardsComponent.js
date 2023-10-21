@@ -7,7 +7,7 @@ import {CardComponent} from "./CardComponent";
 import {RewardCardComponent} from "./RewardCardComponent";
 
 
-export function RewardsView(props) {
+export function RewardsComponent(props) {
 
     const AVAILABLE_COINS = 9;
 

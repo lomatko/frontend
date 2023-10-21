@@ -4,12 +4,15 @@ import {TabMenuComponent} from "../component/TabMenuComponent";
 import {ALL_ACTIVE_CARDS} from "../util/events-jsons";
 import {EventsComponent} from "../component/EventsComponent";
 import {ALL_REWARDS_CARDS} from "../util/rewards-jsons";
-import {RewardsView} from "../component/RewardsView";
+import {RewardsComponent} from "../component/RewardsComponent";
+import {OrganisationsCardComponent} from "../component/OrganisationsCardComponent";
+import {OrganisationComponent} from "../component/OrganisationComponent";
+import {ALL_ORGANISATIONS} from "../util/organisation-json";
 
 const TABS = [
-    {name: 'Organisations'},
+    {name: 'Organisations', component: <OrganisationComponent cards={ALL_ORGANISATIONS} buttonMessage={'Remove'}/>},
     {name: 'Events', component: <EventsComponent cards={ALL_ACTIVE_CARDS} buttonHide={true}/>},
-    {name: 'Coin Market', component: <RewardsView rewards={ALL_REWARDS_CARDS} buttonMessage={'Remove'} isBank={true}/>}]
+    {name: 'Coin Market', component: <RewardsComponent rewards={ALL_REWARDS_CARDS} buttonMessage={'Remove'} isBank={true}/>}]
 
 export function BankView() {
 
