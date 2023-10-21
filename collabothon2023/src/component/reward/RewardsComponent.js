@@ -8,7 +8,6 @@ import {AddRewardCardComponent} from "./AddRewardCardComponent";
 
 
 export function RewardsComponent(props) {
-    console.log('rewardscomponent', props)
     const [rewards, setRewards] = useState([]);
     const [refreshCounter, setRefreshCounter] = useState(0);
 
@@ -16,6 +15,7 @@ export function RewardsComponent(props) {
         axios
             .get("https://backend-3u6yq4mi5q-ew.a.run.app/rewards")
             .then((response) => {
+                console.log('response rewards', response.data)
                 setRewards(response.data)
             })
             .catch((err) => console.log(err));

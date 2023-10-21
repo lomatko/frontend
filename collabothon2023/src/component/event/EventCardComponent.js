@@ -3,6 +3,7 @@ import '../../style/card-style.scss';
 import Button from '@mui/material/Button';
 import axios from "axios";
 import {API_URL} from "../../util/API-util";
+import SvgIcon from '@mui/material/SvgIcon';
 
 export function EventCardComponent(props) {
 
@@ -35,11 +36,12 @@ export function EventCardComponent(props) {
     return (
         <div>
             <article className="plan [ card ]">
+                {/*<img src="/colab-coin.png" alt="image" />*/}
                 <div className="inner" style={{background: props.isFinished ? '#c1c1c1' : '#A9D9D0'}}>
+                    {/*<div style={{width: '25px', backgroundImage: 'url(/colab-coin.png)'}}> </div>*/}
                     <span className="pricing">
-                        <span>
-                            CC {props?.coins === undefined ? 0 : props.coins}
-                        </span>
+
+                         {props?.coins === undefined ? 0 : props.coins} <img src={'./colab-coin.png'} style={{width: '30px', marginLeft: '10px'}}/>
                     </span>
                     <h2 className="title">{props.title}</h2>
                     <p className="info">{props.description}</p>
