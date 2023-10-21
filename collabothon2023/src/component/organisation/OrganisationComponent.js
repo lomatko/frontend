@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import {OrganisationsCardComponent} from "./OrganisationsCardComponent";
 import axios from "axios";
 import {AddOrganisationCardComponent} from "./AddOrganisationCardComponent";
+import {API_URL} from "../../util/API-util";
 
 export function OrganisationComponent(props) {
     const [organisations, setOrganisations] = useState([]);
@@ -10,7 +11,7 @@ export function OrganisationComponent(props) {
 
     useEffect(() => {
         axios
-            .get("https://backend-3u6yq4mi5q-ew.a.run.app/organization")
+            .get(API_URL + "/organizations")
             .then((response) => {
                 setOrganisations(response.data)
             })

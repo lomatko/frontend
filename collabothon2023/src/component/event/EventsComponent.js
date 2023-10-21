@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import axios from "axios";
 import {API_URL} from "../../util/API-util";
 import {AddEventCardComponent} from "./AddEventCardComponent";
+import {ALL_ACTIVE_CARDS, USER_CARDS} from "../../util/events-jsons";
 
 export function EventsComponent(props) {
     const [events, setEvents] = useState([]);
@@ -13,7 +14,7 @@ export function EventsComponent(props) {
         axios
             .get(API_URL + props.url)
             .then((response) => {
-                console.log('response', response)
+                console.log('events response', response)
                 setEvents(response.data)
             })
             .catch((err) => console.log(err));
@@ -52,6 +53,8 @@ export function EventsComponent(props) {
         setRefreshCounter(refreshCounter + 1);
     }
 
+
+    // TODO: use data from backend
     return (
 
         <div>
@@ -60,13 +63,14 @@ export function EventsComponent(props) {
                     events.map(event => {
                         return <Grid item xs={2}>
                             <EventCardComponent
+                                eventId={event.id}
                                 title={event.title}
                                 coins={event.coins}
                                 description={event.description}
                                 participants={event.participants}
                                 time={convertDate(event)}
                                 buttonMessage={props.buttonMessage}
-                                isFinished={event.isFinished}
+                                isFinished={event.status === 'COMPLETED'}
                                 buttonHide={props.buttonHide}
                                 location={event.location}/>
                         </Grid>

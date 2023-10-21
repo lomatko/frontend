@@ -8,6 +8,7 @@ import {AddRewardCardComponent} from "./AddRewardCardComponent";
 
 
 export function RewardsComponent(props) {
+    console.log('rewardscomponent', props)
     const [rewards, setRewards] = useState([]);
     const [refreshCounter, setRefreshCounter] = useState(0);
 
@@ -34,11 +35,13 @@ export function RewardsComponent(props) {
                     rewards.map(reward => {
                         return <Grid item xs={2}>
                             <RewardCardComponent
+                                rewardId={reward.id}
                                 title={reward.name}
                                 coins={reward.price}
                                 isBank={props.isBank}
                                 userCoins={props.isBank? undefined : AVAILABLE_COINS}
                                 description={reward.description}
+                                coinsCallback={props.coinsCallBack}
                                 buttonMessage={props.buttonMessage}/>
                         </Grid>
                     })
@@ -50,6 +53,7 @@ export function RewardsComponent(props) {
                 }
 
             </Grid>
+
         </div>
     );
 }

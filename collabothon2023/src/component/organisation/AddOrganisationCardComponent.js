@@ -20,7 +20,7 @@ export function AddOrganisationCardComponent(props) {
 
     const addOrganisation = () => {
         axios
-            .post("https://backend-3u6yq4mi5q-ew.a.run.app/organization", {
+            .post("https://backend-3u6yq4mi5q-ew.a.run.app/organizations", {
                 name: componentState.name,
                 description: componentState.description,
             })
@@ -35,10 +35,14 @@ export function AddOrganisationCardComponent(props) {
             .catch((err) => console.log(err));
     }
 
+    const isDisabledButton = () => {
+        return componentState.name === '' || componentState.description === '';
+    }
+
     return (
         <div>
             <article className="plan [ card ]">
-                <div className="inner" style={{background: props.isFinished ? '#c1c1c1' : '#A9D9D0'}}>
+                <div className="inner" style={{background: 'rgb(242 193 46 / 29%'}}>
                     <TextField
                         id="reward-name"
                         label="Name"
@@ -53,9 +57,27 @@ export function AddOrganisationCardComponent(props) {
                         value={componentState.description}
                         onChange={(event) => changeDescription(event)}
                     />
-                    <button className="button" onClick={() => addOrganisation()}>
-                        Add Organisation
-                    </button>
+                    {/*<button className="button add-card-button" onClick={() => addOrganisation()}>*/}
+                    {/*    Add Organisation*/}
+                    {/*</button>*/}
+
+
+                    {
+                        isDisabledButton() ? <Button disabled style={{
+                                color: 'white',
+                                background: 'rgb(161,160,160)',
+                                fontWeight: '600',
+                                fontSize: '1.125rem',
+                                textTransform: 'capitalize',
+                                font: 'inherit'
+                            }}>
+                                Add Organisation
+                            </Button> :
+                            <button className="button add-card-button" onClick={() => addOrganisation()}>
+                                Add Organisation
+                            </button>
+                    }
+
                 </div>
             </article>
         </div>

@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import '../../style/card-style.scss';
 import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
+import axios from "axios";
+import {API_URL} from "../../util/API-util";
 
 export function AddEventCardComponent(props) {
     const [componentState, setComponentState] = useState({
@@ -10,8 +12,8 @@ export function AddEventCardComponent(props) {
         participants: 1,
         coins: 1,
         location: '',
-        startTime: '2023-10-29T14:00:00.81523',
-        endTime: '2023-10-29T16:00:00.81523',
+        startDate: '2023-10-29T14:00:00.81523',
+        endDate: '2023-10-29T16:00:00.81523',
     })
 
     const changeTitle = (event) => {
@@ -41,28 +43,28 @@ export function AddEventCardComponent(props) {
             participants: componentState.participants,
             coins: componentState.coins,
             location: componentState.location,
-            startTime: componentState.startTime,
-            endTime: componentState.endTime,
+            startDate: componentState.startDate,
+            endDate: componentState.endDate,
         };
 
         console.log('event data to add', data)
 
-        // axios
-        //     .post("https://backend-3u6yq4mi5q-ew.a.run.app/events", {
-        //         name: componentState.name,
-        //         description: componentState.description,
-        //         price: componentState.price
-        //     })
-        //     .then((response) => {
-        //         console.log('response', response)
-        //         setComponentState({
-        //             name: '',
-        //                 description: '',
-        //                 price: 1,
-        //         })
-        //         props.callBack();
-        //     })
-        //     .catch((err) => console.log(err));
+        axios
+            .post(API_URL + '/organizations/1/event', data)
+            .then((response) => {
+                console.log('response', response)
+                setComponentState({
+                    title: '',
+                    description: '',
+                    participants: 1,
+                    coins: 1,
+                    location: '',
+                    startDate: '2023-10-29T14:00:00.81523',
+                    endDate: '2023-10-29T16:00:00.81523',
+                })
+                props.callBack();
+            })
+            .catch((err) => console.log(err));
     }
 
     const isDisabledButton = () => {
@@ -72,7 +74,7 @@ export function AddEventCardComponent(props) {
     return (
         <div>
             <article className="plan [ card ]">
-                <div className="inner" style={{background: props.isFinished ? '#c1c1c1' : '#A9D9D0'}}>
+                <div className="inner" style={{background: 'rgb(242 193 46 / 29%)'}}>
                     <TextField
                         id="event-name"
                         label="Name"
@@ -130,7 +132,7 @@ export function AddEventCardComponent(props) {
                         }}>
                             Add Event
                         </Button> :
-                            <button className="button" onClick={() => addEvent()}>
+                            <button className="button add-card-button" onClick={() => addEvent()}>
                                 Add Event
                             </button>
                     }
