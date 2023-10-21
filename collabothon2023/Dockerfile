@@ -1,7 +1,9 @@
-FROM node:alpine3.18
-WORKDIR /app
+FROM node:lts-alpine as builder
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
-COPY . ./
-CMD ["npm", "start"]
+RUN mkdir /app-ui
+RUN mv ./node_modules ./app-ui
+WORKDIR /app-ui
+COPY . .
+RUN npm run build
