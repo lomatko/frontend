@@ -22,7 +22,7 @@ export function RewardsComponent(props) {
     }, [refreshCounter]);
 
 
-    const AVAILABLE_COINS = 1000;
+    // const AVAILABLE_COINS = 1000;
 
     const refreshData = () => {
         setRefreshCounter(refreshCounter + 1);
@@ -39,9 +39,10 @@ export function RewardsComponent(props) {
                                 title={reward.name}
                                 coins={reward.price}
                                 isBank={props.isBank}
-                                userCoins={props.isBank? undefined : AVAILABLE_COINS}
+                                userCoins={props.isBank? undefined : props.userCoins}
                                 description={reward.description}
                                 coinsCallback={props.coinsCallBack}
+                                callBack={refreshData}
                                 buttonMessage={props.buttonMessage}/>
                         </Grid>
                     })

@@ -5,12 +5,14 @@ import axios from "axios";
 import {API_URL} from "../../util/API-util";
 
 export function RewardCardComponent(props) {
+    console.log('userCoins', props.userCoins)
+    console.log('coins', props.coins)
+    console.log(props.userCoins < props.coins)
 
     const buyReward = () => {
         axios
             .post(API_URL + '/customers/1/rewards/' + props.rewardId, {})
             .then((response) => {
-                console.log('response', response.data)
                 // setComponentState({
                 //     title: '',
                 //     description: '',
