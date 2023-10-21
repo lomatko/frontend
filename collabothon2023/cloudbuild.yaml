@@ -5,7 +5,7 @@ steps:
   - id: 'Docker push'
     name: gcr.io/cloud-builders/docker
     args: ['push', 'europe-west1-docker.pkg.dev/lomatko/matka-frontend/frontend:latest']
-images: ['europe-west1-docker.pkg.dev/lomatko/matka-backend/backend:latest']
+images: ['europe-west1-docker.pkg.dev/lomatko/matka-frontend/frontend:latest']
 options:
   logging: CLOUD_LOGGING_ONLY
   pool:
