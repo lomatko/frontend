@@ -1,6 +1,7 @@
-FROM node:lts-alpine as builder
-COPY package.json ./
-COPY package-lock.json ./
+FROM node:alpine AS development
+ENV NODE_ENV development
+WORKDIR /react-app
+COPY ./package.json /react-app
 RUN npm install
 COPY . .
-RUN npm start
+CMD npm start
