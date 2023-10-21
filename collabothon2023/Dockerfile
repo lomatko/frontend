@@ -1,7 +1,7 @@
 FROM node:alpine3.18
 WORKDIR /app
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
-COPY . /app
+COPY . ./
 CMD ["npm", "start"]
