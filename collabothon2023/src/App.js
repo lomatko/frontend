@@ -5,6 +5,12 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {ClientView} from "./view/ClientView";
 import {BankView} from "./view/BankView";
 import {OrganisationView} from "./view/OrganisationView";
+import {MainTabMenuComponent} from "./component/MainTabMenuComponent";
+import {TabMenuComponent} from "./component/TabMenuComponent";
+const MAIN_TABS = [
+    {name: 'CLient', component: <ClientView/>},
+    {name: 'Organisation', component: <OrganisationView/>},
+    {name: 'Bank', component: <BankView/>}]
 
 function App() {
 
@@ -13,9 +19,13 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="*" element={<LoginView/>}/>
-                    <Route path="/client" element={<ClientView/>}/>
-                    <Route path="/bank" element={<BankView/>}/>
-                    <Route path="/organisation" element={<OrganisationView/>}/>
+
+                    <Route path="/client" element={<MainTabMenuComponent tabs={MAIN_TABS}/>}/>
+                    <Route path="/bank" element={<MainTabMenuComponent tabs={MAIN_TABS}/>}/>
+                    <Route path="/organisation" element={<MainTabMenuComponent tabs={MAIN_TABS}/>}/>
+                    {/*<Route path="/client" element={<ClientView/>}/>*/}
+                    {/*<Route path="/bank" element={<BankView/>}/>*/}
+                    {/*<Route path="/organisation" element={<OrganisationView/>}/>*/}
                 </Routes>
             </BrowserRouter>
         </div>

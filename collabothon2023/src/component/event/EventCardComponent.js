@@ -3,16 +3,29 @@ import '../../style/card-style.scss';
 import Button from '@mui/material/Button';
 import axios from "axios";
 import {API_URL} from "../../util/API-util";
-import SvgIcon from '@mui/material/SvgIcon';
 
 export function EventCardComponent(props) {
 
     const buttonClick = () => {
-        if (props.buttonMessage === 'Leave') {
+        if(props.buttonMessage === 'Confirm Event'){
+            confirmEvent()
+        }
+        else if (props.buttonMessage === 'Leave') {
             leaveEvent()
         } else {
             joinToEvent();
         }
+    }
+
+    const confirmEvent = () => {
+        axios
+            .post(API_URL + "/organizations/1/" + props.eventId + '/confirm', {})
+            .then((response) => {
+                // console.log('response', );
+                props.callback()
+                props.userCoinsCallback(props.userCoins + props.coins)
+            })
+            .catch((err) => console.log(err));
     }
 
     const joinToEvent = () => {
@@ -20,6 +33,7 @@ export function EventCardComponent(props) {
             .post(API_URL + "/events/" + props.eventId + "/1")
             .then((response) => {
                 console.log('response', response);
+                props.callback()
             })
             .catch((err) => console.log(err));
     }
@@ -29,6 +43,7 @@ export function EventCardComponent(props) {
             .delete(API_URL + "/events/" + props.eventId + "/1")
             .then((response) => {
                 console.log('response', response);
+                props.callback()
             })
             .catch((err) => console.log(err));
     }
@@ -36,12 +51,9 @@ export function EventCardComponent(props) {
     return (
         <div>
             <article className="plan [ card ]">
-                {/*<img src="/colab-coin.png" alt="image" />*/}
                 <div className="inner" style={{background: props.isFinished ? '#c1c1c1' : '#A9D9D0'}}>
-                    {/*<div style={{width: '25px', backgroundImage: 'url(/colab-coin.png)'}}> </div>*/}
                     <span className="pricing">
-
-                         {props?.coins === undefined ? 0 : props.coins} <img src={'./colab-coin.png'} style={{width: '30px', marginLeft: '10px'}}/>
+                         {props?.coins === undefined ? 0 : props.coins} <img src={'./colab-coin.png'} style={{width: '35px'}}/>
                     </span>
                     <h2 className="title">{props.title}</h2>
                     <p className="info">{props.description}</p>

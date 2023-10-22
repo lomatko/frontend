@@ -4,11 +4,11 @@ import Grid from '@mui/material/Grid';
 import axios from "axios";
 import {API_URL} from "../../util/API-util";
 import {AddEventCardComponent} from "./AddEventCardComponent";
-import {ALL_ACTIVE_CARDS, USER_CARDS} from "../../util/events-jsons";
 
 export function EventsComponent(props) {
     const [events, setEvents] = useState([]);
     const [refreshCounter, setRefreshCounter] = useState(0);
+    const [refresh, setRefresh] = useState(0);
 
     useEffect(() => {
         axios
@@ -18,7 +18,7 @@ export function EventsComponent(props) {
                 setEvents(response.data)
             })
             .catch((err) => console.log(err));
-    }, [refreshCounter]);
+    }, [refreshCounter, refresh]);
 
     const convertDate = (event) => {
         return formattedDate(event.startDate) + ' '
@@ -53,6 +53,11 @@ export function EventsComponent(props) {
         setRefreshCounter(refreshCounter + 1);
     }
 
+    const refreshDataAfterLeave = () => {
+        console.log('halo')
+        setRefresh(refresh + 1);
+    }
+
 
     // TODO: use data from backend
     return (
@@ -72,6 +77,9 @@ export function EventsComponent(props) {
                                 buttonMessage={props.buttonMessage}
                                 isFinished={event.status === 'COMPLETED'}
                                 buttonHide={props.buttonHide}
+                                userCoinsCallback={props.coinsCallBack}
+                                userCoins={props.userCoins}
+                                callback={() => refreshDataAfterLeave()}
                                 location={event.location}/>
                         </Grid>
                     })
