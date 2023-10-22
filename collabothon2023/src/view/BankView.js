@@ -8,15 +8,20 @@ import {RewardsComponent} from "../component/reward/RewardsComponent";
 import {OrganisationsCardComponent} from "../component/organisation/OrganisationsCardComponent";
 import {OrganisationComponent} from "../component/organisation/OrganisationComponent";
 import {ALL_ORGANISATIONS} from "../util/organisation-json";
+import {MainTabMenuComponent} from "../component/MainTabMenuComponent";
 
 const TABS = [
     {name: 'Organisations', component: <OrganisationComponent cards={ALL_ORGANISATIONS} buttonMessage={'Remove'}/>},
     {name: 'Events', component: <EventsComponent url={'/events'} buttonHide={true}/>},
     {name: 'Coin Market', component: <RewardsComponent rewards={ALL_REWARDS_CARDS} buttonMessage={'Remove'} isBank={true}/>}]
 
+
+
+
 export function BankView() {
 
     return (
+        // <MainTabMenuComponent tabs={MAIN_TABS}/>
         <TabMenuComponent tabs={TABS}/>
     );
 }

@@ -32,9 +32,7 @@ export function RewardCardComponent(props) {
             <article className="plan [ card ]">
                 <div className="inner" style={{background: props.isFinished ? '#c1c1c1' : '#A9D9D0'}}>
                     <span className="pricing">
-                        <span>
-                            CC {props?.coins === undefined ? 0 : props.coins}
-                        </span>
+                            {props?.coins === undefined ? 0 : props.coins} <img src={'./colab-coin.png'} style={{width: '30px'}}/>
                     </span>
                     <h2 className="title">{props.title}</h2>
                     <p className="info">{props.description}</p>
@@ -57,7 +55,7 @@ export function RewardCardComponent(props) {
                             textTransform: 'capitalize',
                             font: 'inherit'
                         }}>
-                            You need more Coins
+                            Not Enough Coins
                         </Button>
                     }
                 </div>
