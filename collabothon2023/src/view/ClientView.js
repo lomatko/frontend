@@ -27,7 +27,7 @@ export function ClientView() {
 
     const TABS = [
         {name: 'Events', component: <EventsComponent url={'/events'} buttonMessage={'Join Event'} coinsCallBack={updateCoins}/>},
-        {name: 'Your Events', component: <EventsComponent url={'/customers/1/events'} buttonMessage={'Leave'} coinsCallBack={updateCoins}/>},
+        {name: 'Your Events', component: <EventsComponent url={'/customers/1/events'} buttonMessage={'Leave'} coinsCallBack={updateCoins} userCoins={userCoins}/>},
         {name: 'Coin Market', component: <RewardsComponent  buttonMessage={'Buy'} isBank={false} coinsCallBack={updateCoins} userCoins={userCoins}/>}]
 
     return (<TabMenuComponent tabs={TABS} isClientPanel={true} userCoins={userCoins}/>);

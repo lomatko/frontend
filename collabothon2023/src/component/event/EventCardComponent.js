@@ -7,11 +7,25 @@ import {API_URL} from "../../util/API-util";
 export function EventCardComponent(props) {
 
     const buttonClick = () => {
-        if (props.buttonMessage === 'Leave') {
+        if(props.buttonMessage === 'Confirm Event'){
+            confirmEvent()
+        }
+        else if (props.buttonMessage === 'Leave') {
             leaveEvent()
         } else {
             joinToEvent();
         }
+    }
+
+    const confirmEvent = () => {
+        axios
+            .post(API_URL + "/organizations/1/" + props.eventId + '/confirm', {})
+            .then((response) => {
+                // console.log('response', );
+                props.callback()
+                props.userCoinsCallback(props.userCoins + props.coins)
+            })
+            .catch((err) => console.log(err));
     }
 
     const joinToEvent = () => {
@@ -19,7 +33,7 @@ export function EventCardComponent(props) {
             .post(API_URL + "/events/" + props.eventId + "/1")
             .then((response) => {
                 console.log('response', response);
-                // props.callback()
+                props.callback()
             })
             .catch((err) => console.log(err));
     }
@@ -29,7 +43,7 @@ export function EventCardComponent(props) {
             .delete(API_URL + "/events/" + props.eventId + "/1")
             .then((response) => {
                 console.log('response', response);
-                // props.callback()
+                props.callback()
             })
             .catch((err) => console.log(err));
     }

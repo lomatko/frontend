@@ -77,6 +77,8 @@ export function EventsComponent(props) {
                                 buttonMessage={props.buttonMessage}
                                 isFinished={event.status === 'COMPLETED'}
                                 buttonHide={props.buttonHide}
+                                userCoinsCallback={props.coinsCallBack}
+                                userCoins={props.userCoins}
                                 callback={() => refreshDataAfterLeave()}
                                 location={event.location}/>
                         </Grid>
